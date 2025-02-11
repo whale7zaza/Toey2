@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Kanit', sans-serif;
+          min-height: 100vh;
+          background: linear-gradient(135deg, #FFB6C1 0%, #87CEEB 100%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+      .container {
+          max-width: 800px;
+          width: 100%;
+          text-align: center;
+          position: relative;
+      }
+
+      .header {
+          margin-bottom: 40px;
+      }
+
+      .mailbox {
+          width: 60px;
+          height: 60px;
+          margin: 0 auto 10px;
+      }
+
+      .header-text {
+          color: white;
+          font-size: 1.5rem;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .navigation {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 20px;
+          padding: 20px;
+      }
+
+      .nav-item {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 20px;
+          border-radius: 15px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-item:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .nav-icon {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 10px;
+      }
+
+      .nav-text {
+          color: #ff4081;
+          font-size: 1.1rem;
+          font-weight: 500;
+      }
+
+      .back-button {
+          position: absolute;
+          bottom: -60px;
+          left: 20px;
+          padding: 10px 20px;
+          background: rgba(255, 255, 255, 0.9);
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+          font-family: 'Kanit', sans-serif;
+          color: #ff4081;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+          background: #ff4081;
+          color: white;
+      }
+
+      @media (max-width: 768px) {
+          .navigation {
+              grid-template-columns: repeat(2, 1fr);
+          }
+      }
+
+      @media (max-width: 480px) {
+          .navigation {
+              grid-template-columns: 1fr;
+          }
+      }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+          <div class="mailbox">
+              <svg viewBox="0 0 24 24" fill="#ff4081">
+                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+              </svg>
+          </div>
+          <div class="header-text">From me To you</div>
+      </div>
+
+      <div class="navigation">
+          <div class="nav-item" onclick="navigate1('moments')">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmNDA4MSI+PHBhdGggZD0iTTIwIDRoLTMuMmMtLjQtMS4yLTEuNS0yLTIuOC0yLTEuMyAwLTIuNCAxLTIuOCAySDRjLTEuMSAwLTIgLjktMiAydjE0YzAgMS4xLjkgMiAyIDJoMTZjMS4xIDAgMi0uOSAyLTJWNmMwLTEuMS0uOS0yLTItMnptLTkgMGMuNiAwIDEgLjQgMSAxcy0uNCAxLTEgMS0xLS40LTEtMSAuNC0xIDEtMXptNyAxNEg2di0yaDEydjJ6bTAtNEg2di0yaDEydjJ6bTAtNEg2VjhoMTJ2MnoiLz48L3N2Zz4=" class="nav-icon" alt="Moments">
+              <span class="nav-text">Moments</span>
+          </div>
+          <div class="nav-item" onclick="navigate2('time')">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmNDA4MSI+PHBhdGggZD0iTTExLjk5IDJDNi40NyAyIDIgNi40OCAyIDEyczQuNDcgMTAgOS45OSAxMEMxNy41MiAyMiAyMiAxNy41MiAyMiAxMlMxNy41MiAyIDExLjk5IDJ6TTEyIDIwYy00LjQyIDAtOC0zLjU4LTgtOHMzLjU4LTggOC04IDggMy41OCA4IDgtMy41OCA4LTggOHptLjUtN0g3djJoNS41VjEzeiIvPjwvc3ZnPg==" class="nav-icon" alt="Time">
+              <span class="nav-text">Time</span>
+          </div>
+          <div class="nav-item" onclick="navigate3('memories')">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmNDA4MSI+PHBhdGggZD0iTTEyIDIyYzEuMSAwIDItLjkgMi0yaC00YzAgMS4xLjkgMiAyIDJ6bTYtNnYtNWMwLTMuMDctMS42My01LjY0LTQuNS02LjMyVjRjMC0uODMtLjY3LTEuNS0xLjUtMS41cy0xLjUuNjctMS41IDEuNXYuNjhDNy42NCA1LjM2IDYgNy45MiA2IDExdjVsLTIgMnYxaDE2di0xbC0yLTJ6bS0yIDBIOHYtNWMwLTIuNDggMS41MS00LjUgNC00LjVzNCAyLjAyIDQgNC41djV6Ii8+PC9zdmc+" class="nav-icon" alt="Memories">
+              <span class="nav-text">Memories</span>
+          </div>
+          <div class="nav-item" onclick="navigate4('message')">
+              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2ZmNDA4MSI+PHBhdGggZD0iTTIwIDRINGMtMS4xIDAtMiAuOS0yIDJ2MTJjMCAxLjEuOSAyIDIgMmgxNmMxLjEgMCAyLS45IDItMlY2YzAtMS4xLS45LTItMi0yem0wIDRsLTggNS04LTVWNmw4IDUgOC01djJ6Ii8+PC9zdmc+" class="nav-icon" alt="Message">
+              <span class="nav-text">Message</span>
+          </div>
+      </div>
+
+      <button class="back-button" onclick="goBack()">
+          ← Back
+      </button>
+  </div>
+
+  <script>
+      function navigate1(moments) {
+          window.location.href ='moment.html';
+      }
+
+    function goBack() {
+        window.history.back();
+        window.location.href ='quiz1.html';
+    }
+</script>
+<script>
+    function navigate2(time) {
+        window.location.href ='TimeCounterpage.html';
+    }
+
+  function goBack() {
+      window.history.back();
+      window.location.href ='quiz1.html';
+  }
+</script>
+<script>
+    function navigate3(Memmories) {
+        window.history.back();
+        window.location.href ='Memmories.html';
+    }
+
+  function goBack() {
+      window.history.back();
+      window.location.href ='quiz1.html';
+  }
+</script>
+<script>
+    function navigate4(Message) {
+        window.location.href ='message_testtml.html';
+    }
+
+  function goBack() {
+      window.history.back();
+      window.location.href ='quiz1.html';
+  }
+</script>
+</body>
+</html>

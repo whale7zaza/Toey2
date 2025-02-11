@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Toey ❤️</title>
+    
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffd6e0, #ffecd2);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        h1 {
+            font-family: 'https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap"stylesheet', cursive;
+            font-size: 40px;
+            color: #e781b4;
+            position: absolute;
+            top: 6%;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .envelope {
+            width: 380px;
+            height: 280px;
+            background-color: #f4c57a;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .envelope.open {
+            transform: translateY(-40px);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: #e6b56a;
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        }
+
+        .letter {
+            width: 300px;
+            padding: 20px;
+            background-color: rgb(255, 195, 255);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 40%);
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            opacity: 0;
+        }
+
+        .letter.show {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .back-button, .back-letter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: #d63384;
+            border: 2px solid #d63384;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .back-button:hover, .back-letter:hover {
+            background-color: #ffe6f2;
+        }
+
+        .back-letter {
+            display: none;
+        }
+
+        .back-letter.show {
+            display: block;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6699;
+            font-size: 20px;
+            opacity: 0.8;
+            animation: floatUp 3s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>I Love Toey So Much ❤️</h1>
+
+    <button class="back-button" onclick="goBack()">← Back</button>
+
+    <div class="envelope" onclick="openLetter()"></div>
+
+    <div class="letter">
+        <p><strong>Dear Babeby,</strong></p>
+        <p>Happy Valentine's Day naka ❤️</p>
+        <p>ขอบคุณที่แฟนคอยอยู่ข้างๆเค้ามาตลอดนะคะ</p>
+        <p>เค้าอยากให้แฟนอยู่กับเค้าแบบนี้ไปนานๆเยย</p>
+        <p>ขอบคุณสำหรับทุกอย่างเลยนะคะแฟน</p>
+        <p>แล้วก็ขอบคุณสำหรับเสียงนี้ในทุกวันนะคะแฟนอิอิ</p>
+        <p>LOVE YOU Naka จุ๊บๆ</p>
+    </div>
+    </div>
+    </div></p>
+
+    <audio id="background-music" src="C:\valentie\Toey.mp3" autoplay loop controls></audio>
+    <button class="back-letter" onclick="closeLetter()">← Back</button>
+
+    <script>
+        function openLetter() {
+            document.querySelector(".envelope").classList.add("open");
+            document.querySelector(".letter").classList.add("show");
+
+            document.querySelector(".back-letter").classList.add("show");
+
+            document.querySelector(".back-button").style.display = "none";
+        }
+
+        function closeLetter() {
+            document.querySelector(".envelope").classList.remove("open");
+            document.querySelector(".letter").classList.remove("show");
+
+
+            document.querySelector(".back-letter").classList.remove("show");
+
+            document.querySelector(".back-button").style.display = "block";
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            const startPos = Math.random() * window.innerWidth;
+            heart.style.left = `${startPos}px`;
+            heart.style.bottom = "-20px";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 3000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>

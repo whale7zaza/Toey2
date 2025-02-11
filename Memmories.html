@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Memories</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Kanit', sans-serif;
+          background: linear-gradient(135deg, #a6c0fe 0%, #f68084 100%);
+          min-height: 100vh;
+          padding: 20px;
+      }
+
+      .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 20px;
+      }
+
+      .photo-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          gap: 15px;
+          padding: 20px;
+      }
+
+      .photo-item {
+          position: relative;
+          aspect-ratio: 1;
+          border-radius: 15px;
+          overflow: hidden;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+      }
+
+      .photo-item:hover {
+          transform: scale(1.05);
+      }
+
+      .photo-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+
+      .back-button {
+          position: fixed;
+          bottom: 30px;
+          right: 30px;
+          background: rgba(255, 255, 255, 0.9);
+          border: none;
+          padding: 12px 25px;
+          border-radius: 25px;
+          font-family: 'Kanit', sans-serif;
+          font-size: 1.1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+          transition: all 0.3s ease;
+      }
+
+      .back-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      }
+
+      .back-button svg {
+          width: 20px;
+          height: 20px;
+      }
+
+      @media (max-width: 768px) {
+          .photo-grid {
+              grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+              gap: 10px;
+          }
+
+          .back-button {
+              bottom: 20px;
+              right: 20px;
+              padding: 10px 20px;
+              font-size: 1rem;
+          }
+      }
+  </style>
+</head>
+<body> <div class="container">
+    <audio id="background-music" src="C:\valentie\คู่ชีวิตCOCKTAIL.mp3" autoplay loop controls></audio>
+
+    <div class="photo-grid">
+        <div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\1.jpg" alt="Memory 1">
+        </div>
+        <div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\5.jpg" alt="Memory 2">
+        </div>
+        <div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\4.jpg" alt="Memory 3">
+        </div>
+        <div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\8.jpg" alt="Memory 4">
+        </div>
+        <div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\3.jpg" alt="Memory 4">
+        </div><div class="photo-item">
+            <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\7.jpg" alt="Memory 4">
+        <div class="photo-item">
+            </div>
+        </div>
+    </div>
+</div>
+<video id="myVideo" width="1080" height="540" autoplay muted controls>
+    <source src="C:\valentie\rov.mp4" type="video/mp4">
+  </video>
+  
+  <button onclick="playWithSound()">เปิดเสียง</button>
+  
+  <script>
+    function playWithSound() {
+      const video = document.getElementById("myVideo");
+      video.muted = false; // ปิดการปิดเสียง
+      video.play();        // เล่นวิดีโอ
+    }
+  </script>
+  
+
+  <button class="back-button" onclick="goBack()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+      </svg>
+      Back
+  </button>
+
+  <script>
+      //กดย้อน
+      function goBack() {
+         window.history.back();
+      }
+  </script>
+</body>
+</html>

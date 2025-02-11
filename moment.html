@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Moments</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Kanit', sans-serif;
+          min-height: 100vh;
+          background: #f5f5f5;
+          background-image: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%), 
+                          repeating-linear-gradient(0deg, transparent, transparent 39px, #e0e0e0 39px, #e0e0e0 40px);
+          background-blend-mode: overlay;
+          padding: 20px;
+      }
+
+      .container {
+          max-width: 1000px;
+          margin: 0 auto;
+          text-align: center;
+      }
+
+      .header {
+          margin-bottom: 30px;
+          position: relative;
+      }
+
+      .title {
+          color: #8b4513;
+          font-size: 2.5rem;
+          margin-bottom: 10px;
+      }
+
+      .subtitle {
+          color: #8b4513;
+          font-size: 1.2rem;
+          font-style: italic;
+      }
+
+      .cherry-blossom {
+          position: absolute;
+          top: 0;
+          right: 20px;
+          width: 40px;
+          height: 40px;
+          color: #ffb7c5;
+      }
+
+      .slideshow-container {
+          position: relative;
+          max-width: 800px;
+          margin: auto;
+          background: white;
+          padding: 20px;
+          border-radius: 15px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      .slide {
+          display: none;
+          padding: 20px;
+      }
+
+      .slide.active {
+          display: block;
+      }
+
+      .slide img {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      }
+
+      .prev, .next {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          padding: 15px;
+          color: #8b4513;
+          font-size: 24px;
+          cursor: pointer;
+          background: rgba(255,255,255,0.8);
+          border: none;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.3s ease;
+      }
+
+      .prev:hover, .next:hover {
+          background: rgba(139,69,19,0.1);
+      }
+
+      .prev {
+          left: -25px;
+      }
+
+      .next {
+          right: -25px;
+      }
+
+      .dots {
+          margin-top: 20px;
+          display: flex;
+          justify-content: center;
+          gap: 10px;
+      }
+
+      .dot {
+          width: 12px;
+          height: 12px;
+          background: #ddd;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+
+      .dot.active {
+          background: #8b4513;
+      }
+
+      .back-btn {
+          position: fixed;
+          bottom: 30px;
+          left: 30px;
+          padding: 12px 25px;
+          background: #8b4513;
+          color: white;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          font-family: 'Kanit', sans-serif;
+          font-size: 1.1rem;
+          transition: all 0.3s ease;
+          box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      }
+
+      .back-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+
+      @media (max-width: 768px) {
+          .slideshow-container {
+              margin: 0 30px;
+          }
+          
+          .prev {
+              left: 10px;
+          }
+          
+          .next {
+              right: 10px;
+          }
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <div class="header">
+          <h1 class="title">Our Moments <span style="color: #ff69b4;">&lt;7</span></h1>
+          <p class="subtitle">My favorite love story is ours</p>
+          <svg class="cherry-blossom" viewBox="0 0 24 24">
+              <path fill="currentColor" d="M12,2C14.3,2 16.3,4 16.3,6.2C16.3,8.4 14.3,10.4 12,10.4C9.7,10.4 7.7,8.4 7.7,6.2C7.7,4 9.7,2 12,2M12,3.5C10.5,3.5 9.2,4.7 9.2,6.2C9.2,7.7 10.5,8.9 12,8.9C13.5,8.9 14.8,7.7 14.8,6.2C14.8,4.7 13.5,3.5 12,3.5M12,5.5C12.6,5.5 13,5.9 13,6.5C13,7.1 12.6,7.5 12,7.5C11.4,7.5 11,7.1 11,6.5C11,5.9 11.4,5.5 12,5.5Z"/>
+          </svg>
+      </div>
+
+      <div class="slideshow-container">
+          <div class="slides">
+              <div class="slide active">
+                  <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\10.jpg" alt="Our Moment 1">
+              </div>
+              <div class="slide">
+                  <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\2.jpg" alt="Our Moment 2">
+              </div>
+              <div class="slide">
+                  <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\3.jpg" alt="Our Moment 3">
+              </div>
+              <div class="slide">
+                <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\16.jpg" alt="Our Moment 4">
+            </div>
+            <div class="slide">
+                <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\17.jpg" alt="Our Moment 5">
+            </div>
+            <div class="slide">
+                <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\18.jpg" alt="Our Moment 6">
+            </div>
+            <div class="slide">
+                <img src="C:\Users\SlayerX\OneDrive\รูปภาพ\valenties\19.jpg" alt="Our Moment 7">
+            </div>
+          </div>
+
+          <button class="prev" onclick="changeSlide(-1)">❮</button>
+          <button class="next" onclick="changeSlide(1)">❯</button>
+
+          <div class="dots">
+              <span class="dot active" onclick="currentSlide(0)"></span>
+              <span class="dot" onclick="currentSlide(1)"></span>
+              <span class="dot" onclick="currentSlide(2)"></span>
+          </div>
+      </div>
+  </div>
+
+  <button class="back-btn" onclick="goBack()">← Back</button>
+
+  <script>
+      let currentSlideIndex = 0;
+      const slides = document.querySelectorAll('.slide');
+      const dots = document.querySelectorAll('.dot');
+
+      function showSlide(n) {
+          // ซ่อนทุก slide
+          slides.forEach(slide => slide.style.display = 'none');
+          dots.forEach(dot => dot.classList.remove('active'));
+
+          // แสดง slide ที่ต้องการ
+          slides[n].style.display = 'block';
+          dots[n].classList.add('active');
+      }
+
+      function changeSlide(n) {
+          currentSlideIndex += n;
+          if (currentSlideIndex >= slides.length) {
+              currentSlideIndex = 0;
+          }
+          if (currentSlideIndex < 0) {
+              currentSlideIndex = slides.length - 1;
+          }
+          showSlide(currentSlideIndex);
+      }
+
+      function currentSlide(n) {
+          currentSlideIndex = n;
+          showSlide(currentSlideIndex);
+      }
+
+      function goBack() {
+          window.location.href = 'story.html';
+      }
+
+      setInterval(() => {
+          changeSlide(1);
+      }, 5000);
+  </script>
+</body>
+</html>
