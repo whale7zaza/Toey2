@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day Quiz</title>
+  <style>
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+          font-family: 'Kanit', sans-serif;
+          min-height: 100vh;
+          background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+      }
+
+      .container {
+          max-width: 600px;
+          width: 100%;
+          text-align: center;
+          position: relative;
+      }
+
+      .welcome-page {
+          opacity: 1;
+          transition: opacity 0.5s ease-in-out;
+      }
+
+      .heart-container {
+          position: relative;
+          width: 300px;
+          height: 300px;
+          margin: 0 auto 30px;
+          perspective: 1000px;
+      }
+
+      .heart {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transform-style: preserve-3d;
+          animation: heartBeat 1.5s ease-in-out infinite;
+      }
+
+      .heart::before,
+      .heart::after {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          background: linear-gradient(145deg, #ff9ebd, #ff4081);
+          box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+      }
+
+      .heart::before {
+          transform: translateY(-50%);
+      }
+
+      .heart::after {
+          transform: translateX(-50%);
+      }
+
+      @keyframes heartBeat {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+      }
+
+      .message {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          color: white;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+          z-index: 10;
+      }
+
+      .message h1 {
+          font-size: 2rem;
+          margin-bottom: 15px;
+      }
+
+      .message p {
+          font-size: 1.2rem;
+          margin-bottom: 20px;
+      }
+
+      .quiz-page {
+          display: none;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out;
+      }
+
+      .question-container {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 30px;
+          border-radius: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .question {
+          font-size: 1.5rem;
+          margin-bottom: 30px;
+          color: #ff4081;
+      }
+
+      .options {
+          display: grid;
+          gap: 15px;
+      }
+
+      .feedback {
+          margin-top: 20px;
+          padding: 15px;
+          border-radius: 10px;
+          font-size: 1.1rem;
+          display: none;
+      }
+
+      .feedback.wrong {
+          background: rgba(255, 64, 129, 0.1);
+          color: #ff4081;
+      }
+
+      .feedback.correct {
+          background: rgba(76, 175, 80, 0.1);
+          color: #4CAF50;
+      }
+      .btn {
+          padding: 12px 25px;
+          font-size: 1.1rem;
+          border: none;
+          border-radius: 25px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-family: 'Kanit', sans-serif;
+      }
+
+      .btn-primary {
+          background: #ff4081;
+          color: white;
+          box-shadow: 0 5px 15px rgba(255, 64, 129, 0.3);
+      }
+
+      .btn-primary:hover {
+          background: #f50057;
+          transform: translateY(-2px);
+      }
+
+      .btn-story {
+          background: #4CAF50;
+          color: white;
+          box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+          display: none;
+          margin: 20px auto 0;
+      }
+
+      .btn-story:hover {
+          background: #388E3C;
+          transform: translateY(-2px);
+      }
+
+      .option-btn {
+          background: white;
+          color: #ff4081;
+          border: 2px solid #ff4081;
+          width: 100%;
+      }
+
+      .option-btn:hover {
+          background: #ff4081;
+          color: white;
+      }
+
+      .option-btn:disabled {
+          opacity: 0.7;
+          cursor: not-allowed;
+      }
+      .fade-out {
+          opacity: 0;
+      }
+
+      .fade-in {
+          opacity: 1;
+      }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+      <div class="welcome-page" id="welcomePage">
+          <div class="heart-container">
+              <div class="heart">
+                  <div class="message">
+                      <h1>Happy Valentine's Day</h1>
+                      <p>ขอให้วันนี้เป็นวันที่พิเศษสำหรับเราสองคนนะคะ</p>
+                  </div>
+              </div>
+          </div>
+          <button class="btn btn-primary" onclick="startQuiz()">Let's go!</button>
+      </div>
+
+      <div class="quiz-page" id="quizPage">
+          <div class="question-container">
+              <div class="question">เรารู้จักกันครั้งแรกที่ไหน?</div>
+              <div class="options">
+                  <button class="btn option-btn" onclick="checkAnswer('Discord')">1. Dis
+                    scord</button>
+                  <button class="btn option-btn" onclick="checkAnswer('IG')">2. IG</button>
+                  <button class="btn option-btn" onclick="checkAnswer('Facebook')">3. Facebook</button>
+                  <button class="btn option-btn" onclick="checkAnswer('Siam')">4. Siam</button>
+              </div>
+              <div id="feedback" class="feedback"></div>
+              <button id="storyButton" class="btn btn-story" onclick="goToStory()">ไปดูเรื่องราวของเรากัน</button>
+          </div>
+      </div>
+  </div>
+
+  <script>
+      function startQuiz() {
+          const welcomePage = document.getElementById('welcomePage');
+          const quizPage = document.getElementById('quizPage');
+          
+          welcomePage.classList.add('fade-out');
+          setTimeout(() => {
+              welcomePage.style.display = 'none';
+              quizPage.style.display = 'block';
+              setTimeout(() => {
+                  quizPage.classList.add('fade-in');
+              }, 50);
+          }, 500);
+      }
+
+      function checkAnswer(answer) {
+          const feedback = document.getElementById('feedback');
+          const storyButton = document.getElementById('storyButton');
+          const options = document.querySelectorAll('.option-btn');
+          
+          feedback.style.display = 'block';
+          
+          if (answer === 'Discord') {
+              feedback.textContent = 'เย้ แฟนเก่งที่สุดเรามาดูความทรงจำดีๆที่ผ่านมาของเรากันนะคะ';
+              feedback.className = 'feedback correct';
+              storyButton.style.display = 'block';
+              options.forEach(btn => btn.disabled = true);
+          } else {
+              feedback.textContent = 'สู้ๆนะคะแฟน เกือบถูกแย้วอีกแค่นิดเดียวเท่านั้น';
+              feedback.className = 'feedback wrong';
+          }
+      }
+
+    function goToStory() {
+          window.location.href = 'story.html'}
+  </script>
+</body>
+</html>
